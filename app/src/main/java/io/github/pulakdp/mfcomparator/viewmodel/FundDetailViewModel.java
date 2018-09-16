@@ -84,7 +84,7 @@ public class FundDetailViewModel extends BaseObservable {
                 detailResponse.data.mutualFund.bestReturn.toDate + ")";
         minSub = rupee + detailResponse.data.mutualFund.details.minimumSubscription;
         minAddSub = rupee + detailResponse.data.mutualFund.details.minimumAdditionSubscription;
-        exitLoad = detailResponse.data.mutualFund.details.exitLoadText;
+        exitLoad = detailResponse.data.mutualFund.details.exitLoadText.trim();
         expenses = String.valueOf(detailResponse.data.mutualFund.expenseRatio);
         schemeAum = rupee + detailResponse.data.mutualFund.details.assetAum;
         amcAum = rupee + detailResponse.data.mutualFund.details.amc.aum;
