@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="io.github.pulakdp.mfcomparator.viewmodel.FundDetailViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".MFDetailActivity">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                    app:title="@{vm.title}" />
+
+            </android.support.design.widget.AppBarLayout>
+
+            <TextView
+                android:id="@+id/rupee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="\u20B9"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/appBar" />
+
+            <TextView
+                android:id="@+id/nav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.nav}"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/rupee"
+                app:layout_constraintStart_toEndOf="@+id/rupee"
+                app:layout_constraintTop_toTopOf="@id/rupee"
+                tools:text="10.26" />
+
+            <TextView
+                android:id="@+id/nav_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:text="(NAV)"
+                android:textColor="@color/greyText"
+                app:layout_constraintBottom_toBottomOf="@+id/nav"
+                app:layout_constraintStart_toEndOf="@+id/nav"
+                app:layout_constraintTop_toTopOf="@+id/nav" />
+
+            <TextView
+                android:id="@+id/date_updated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vm.dateUpdated}"
+                android:textColor="@color/greyText"
+                app:layout_constraintLeft_toLeftOf="@+id/rupee"
+                app:layout_constraintTop_toBottomOf="@+id/nav"
+                tools:text="as on 2018-09-14" />
+
+            <TextView
+                android:id="@+id/returns_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/dark_blue"
+                android:drawableRight="@drawable/calculator"
+                android:paddingBottom="15dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="15dp"
+                android:text="RETURNS"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date_updated" />
+
+            <TextView
+                android:id="@+id/last_year_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@{vm.lastYearReturn}"
+                app:layout_constraintEnd_toStartOf="@+id/last_3_years_value"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/returns_header"
+                tools:text="4.06%" />
+
+            <TextView
+                android:id="@+id/last_3_years_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{vm.last3YearsReturn}"
+                app:layout_constraintEnd_toStartOf="@+id/last_5_years_value"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/last_year_value"
+                app:layout_constraintTop_toTopOf="@+id/last_year_value"
+                tools:text="7.35%" />
+
+            <TextView
+                android:id="@+id/last_5_years_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="@{vm.last5YearsReturn}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/last_3_years_value"
+                app:layout_constraintTop_toTopOf="@+id/last_year_value"
+                tools:text="8.5%" />
+
+            <TextView
+                android:id="@+id/last_year"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="16dp"
+                android:text="LAST YEAR"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toStartOf="@+id/last_3_years"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/last_year_value" />
+
+            <TextView
+                android:id="@+id/last_3_years"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:text="LAST 3 YEARS"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toStartOf="@+id/last_5_years"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/last_year"
+                app:layout_constraintTop_toBottomOf="@+id/last_3_years_value" />
+
+            <TextView
+                android:id="@+id/last_5_years"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="16dp"
+                android:text="LAST 5 YEARS"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/last_3_years"
+                app:layout_constraintTop_toBottomOf="@+id/last_5_years_value" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccentLight"
+                app:layout_constraintBottom_toBottomOf="@id/last_year"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp" />
+
+            <TextView
+                android:id="@+id/scheme_type_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.schemeType}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/last_year"
+                tools:text="Open-ended" />
+
+            <TextView
+                android:id="@+id/scheme_type"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="SCHEME TYPE"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/scheme_type_value"
+                app:layout_constraintStart_toStartOf="@+id/scheme_type_value"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_type_value" />
+
+            <TextView
+                android:id="@+id/benchmark_type_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:gravity="bottom"
+                android:text="@{vm.benchmarkType}"
+                app:layout_constraintBottom_toBottomOf="@+id/highest_year_return_value"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_type"
+                tools:text="Crisil Liquid Fund Index" />
+
+            <TextView
+                android:id="@+id/benchmark_type"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="BENCHMARK TYPE"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/benchmark_type_value"
+                app:layout_constraintStart_toStartOf="@+id/benchmark_type_value"
+                app:layout_constraintTop_toBottomOf="@+id/benchmark_type_value" />
+
+            <TextView
+                android:id="@+id/min_sub_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.minSub}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/benchmark_type"
+                tools:text="\u20B9 5000.0" />
+
+            <TextView
+                android:id="@+id/min_sub"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="MIN SUBSCRIPTION"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/min_sub_value"
+                app:layout_constraintStart_toStartOf="@+id/min_sub_value"
+                app:layout_constraintTop_toBottomOf="@+id/min_sub_value" />
+
+            <TextView
+                android:id="@+id/exit_load_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.exitLoad}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/min_sub"
+                tools:text="Exit load of 0.50% if redeemed within 1 month" />
+
+            <TextView
+                android:id="@+id/exit_load"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="EXIT LOAD"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/exit_load_value"
+                app:layout_constraintStart_toStartOf="@+id/exit_load_value"
+                app:layout_constraintTop_toBottomOf="@+id/exit_load_value" />
+
+            <TextView
+                android:id="@+id/scheme_aum_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.schemeAum}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_center"
+                app:layout_constraintStart_toStartOf="@+id/guideline_left"
+                app:layout_constraintTop_toBottomOf="@+id/exit_load"
+                tools:text="\u20B9 6362.37" />
+
+            <TextView
+                android:id="@+id/scheme_aum"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="SCHEME AUM (in Crs)"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/scheme_aum_value"
+                app:layout_constraintStart_toStartOf="@+id/scheme_aum_value"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_aum_value" />
+
+            <TextView
+                android:id="@+id/scheme_category_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.schemeCategory}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+                app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                app:layout_constraintTop_toBottomOf="@+id/last_year"
+                tools:text="Short Term" />
+
+            <TextView
+                android:id="@+id/scheme_category"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="SCHEME CATEGORY"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/scheme_category_value"
+                app:layout_constraintStart_toStartOf="@+id/scheme_category_value"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_category_value" />
+
+            <TextView
+                android:id="@+id/highest_year_return_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.highestReturn}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+                app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_category"
+                tools:text="11.61%\n(Aug, 13 - Aug, 14)" />
+
+            <TextView
+                android:id="@+id/highest_year_return"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="HIGHEST 1Yr RET (%)"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/highest_year_return_value"
+                app:layout_constraintStart_toStartOf="@+id/highest_year_return_value"
+                app:layout_constraintTop_toBottomOf="@+id/highest_year_return_value" />
+
+            <TextView
+                android:id="@+id/min_add_sub_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.minAddSub}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+                app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                app:layout_constraintTop_toBottomOf="@+id/highest_year_return"
+                tools:text="\u20B9 1000.0" />
+
+            <TextView
+                android:id="@+id/min_add_sub"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="MIN ADDITION SUBSCRIPTION"
+                android:textColor="@color/greyText"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/min_add_sub_value"
+                app:layout_constraintStart_toStartOf="@+id/min_add_sub_value"
+                app:layout_constraintTop_toBottomOf="@+id/min_add_sub_value" />
+
+            <TextView
+                android:id="@+id/expenses_value"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
+                android:gravity="bottom"
+                android:text="@{vm.expenses}"
+                app:layout_constraintBottom_toBottomOf="@+id/exit_load_value"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+                app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                app:layout_constraintTop_toBottomOf="@+id/min_add_sub"
+                tools:text="0.15" />
+
+            <TextView
+                android:id="@+id/expenses"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="EXPENSES (%)"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/expenses_value"
+                app:layout_constraintStart_toStartOf="@+id/expenses_value"
+                app:layout_constraintTop_toBottomOf="@+id/expenses_value" />
+
+            <TextView
+                android:id="@+id/amc_aum_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
+                android:text="@{vm.amcAum}"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_right"
+                app:layout_constraintStart_toStartOf="@+id/guideline_center"
+                app:layout_constraintTop_toBottomOf="@+id/expenses"
+                tools:text="11.61% (Aug, 13 - Aug, 14)" />
+
+            <TextView
+                android:id="@+id/amc_aum"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:text="AMC AUM (in Crs)"
+                android:textColor="@color/greyText"
+                app:layout_constraintEnd_toEndOf="@+id/amc_aum_value"
+                app:layout_constraintStart_toStartOf="@+id/amc_aum_value"
+                app:layout_constraintTop_toBottomOf="@+id/amc_aum_value" />
+
+            <TextView
+                android:id="@+id/riskometer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/dark_blue"
+                android:paddingBottom="15dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="15dp"
+                android:text="RISKOMETER"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/amc_aum" />
+
+            <TextView
+                android:id="@+id/riskometer_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_blue"
+                android:paddingBottom="15dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="15dp"
+                android:text="@{vm.riskometer}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/riskometer" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>
