@@ -2,9 +2,13 @@ package io.github.pulakdp.mfcomparator.viewmodel;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import io.github.pulakdp.mfcomparator.R;
 import io.github.pulakdp.mfcomparator.model.DetailResponse;
 import io.github.pulakdp.mfcomparator.rest.PiggyApi;
 import io.github.pulakdp.mfcomparator.rest.PiggyApiClient;
@@ -14,7 +18,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class FundDetailViewModel extends BaseObservable {
 
-    private static final String TAG = FundDetailViewModel.class.getSimpleName();
     public final String rupee = "\u20B9";
 
     private Context context;
@@ -36,7 +39,11 @@ public class FundDetailViewModel extends BaseObservable {
     public String schemeAum = "-";
     public String amcAum = "-";
     public String riskometer = "-";
+    public String objective = "";
+    public String suitability = "";
 
+    public boolean showObjective;
+    public boolean showSuitability;
 
     private DetailResponse detailResponse;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -59,13 +66,12 @@ public class FundDetailViewModel extends BaseObservable {
         if (detailResponse == null)
             return;
         this.detailResponse = detailResponse;
-        Log.d(TAG, "detailsFetched: " + detailResponse.data.mutualFund.details.name);
         updateValuesAndNotify();
     }
 
     private void updateValuesAndNotify() {
         title = detailResponse.data.mutualFund.details.name;
-        nav = String.valueOf(Math.round(detailResponse.data.mutualFund.nav * 100) / 100);
+        nav = String.valueOf(Math.round(detailResponse.data.mutualFund.nav * 100d) / 100d);
         dateUpdated = "as on" + detailResponse.data.mutualFund.navRefreshDate.split("T")[0];
         lastYearReturn = detailResponse.data.mutualFund.details.yoyReturn + "%";
         last3YearsReturn = detailResponse.data.mutualFund.details.return3yr + "%";
@@ -73,7 +79,7 @@ public class FundDetailViewModel extends BaseObservable {
         schemeType = detailResponse.data.mutualFund.details.schemeType;
         schemeCategory = detailResponse.data.mutualFund.details.category;
         benchmarkType = detailResponse.data.mutualFund.details.benchmark.name;
-        highestReturn = String.valueOf(Math.round(detailResponse.data.mutualFund.bestReturn.percentChange * 100) / 100)
+        highestReturn = String.valueOf(Math.round(detailResponse.data.mutualFund.bestReturn.percentChange * 100d) / 100d)
                 + "%\n(" + detailResponse.data.mutualFund.bestReturn.fromDate + " - " +
                 detailResponse.data.mutualFund.bestReturn.toDate + ")";
         minSub = rupee + detailResponse.data.mutualFund.details.minimumSubscription;
@@ -83,13 +89,48 @@ public class FundDetailViewModel extends BaseObservable {
         schemeAum = rupee + detailResponse.data.mutualFund.details.assetAum;
         amcAum = rupee + detailResponse.data.mutualFund.details.amc.aum;
         riskometer = detailResponse.data.mutualFund.details.riskometer;
+        objective = detailResponse.data.mutualFund.details.objective;
+        String[] suitabilityArray = detailResponse.data.mutualFund.details.suitability.split(":");
+        StringBuilder builder = new StringBuilder(suitabilityArray[0].replace("*", ":"));
+        for (int i = 1; i < suitabilityArray.length; i++) {
+            builder.append("\n");
+            builder.append("* ");
+            builder.append(suitabilityArray[i]);
+        }
+        suitability = builder.toString();
+        notifyChange();
+    }
+
+    public void toggleObjective(View view) {
+        TextView textView = (TextView) view;
+        if (!showObjective) {
+            showObjective = true;
+            Drawable minus = context.getResources().getDrawable( R.drawable.minus);
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, null, minus, null);
+        } else {
+            showObjective = false;
+            Drawable plus = context.getResources().getDrawable( R.drawable.plus);
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, null, plus, null);
+        }
+        notifyChange();
+    }
+
+    public void toggleSuitability(View view) {
+        TextView textView = (TextView) view;
+        if (!showSuitability) {
+            showSuitability = true;
+            Drawable minus = context.getResources().getDrawable( R.drawable.minus);
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, null, minus, null);
+        } else {
+            showSuitability = false;
+            Drawable plus = context.getResources().getDrawable( R.drawable.plus);
+            textView.setCompoundDrawablesWithIntrinsicBounds(null, null, plus, null);
+        }
         notifyChange();
     }
 
     private void detailFetchFailed(Throwable t) {
-        t.printStackTrace();
         Toast.makeText(context, "Failed to get details :(\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
-        Log.d(TAG, t.getMessage());
     }
 
     public void onDestroy() {

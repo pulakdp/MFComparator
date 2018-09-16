@@ -33,7 +33,6 @@ import io.reactivex.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity
         implements SearchView.OnQueryTextListener {
 
-    public static final String TAG = MainActivity.class.getSimpleName();
     private static final int PAGE_SIZE = 20;
 
     private int currentPage = 1;
@@ -161,9 +160,6 @@ public class MainActivity extends AppCompatActivity
             if (searchResponse.data.searchResults.size() < PAGE_SIZE)
                 isLastPage = true;
         }
-//        for (SearchResponse.SearchResult result: searchResponse.data.searchResults) {
-//            Log.d(TAG, "processResults: " + result.toString());
-//        }
     }
 
     private void searchFailed(Throwable t) {
@@ -182,7 +178,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onQueryTextSubmit(String query) {
         if (TextUtils.isEmpty(query))
             return false;
-        Log.d(TAG, "onQueryTextSubmit: " + query);
         currentPage = 1;
         showEmptyText.set(false);
         isLoading.set(true);

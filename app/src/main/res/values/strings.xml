@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MFComparator</string>
+    <string name="app_name">Piggy Mock</string>
     <string name="returns">RETURNS</string>
     <string name="last_year">LAST YEAR</string>
     <string name="last_3_years">LAST 3 YEARS</string>
@@ -17,4 +17,5 @@
     <string name="riskometer">RISKOMETER</string>
     <string name="nav">(NAV)</string>
     <string name="empty_text">Search for some mutual funds to get started!</string>
+    <string name="investment_objective">INVESTMENT OBJECTIVE</string>
 </resources>

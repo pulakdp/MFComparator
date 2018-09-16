@@ -465,6 +465,86 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@id/riskometer" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorAccentLight"
+                app:layout_constraintBottom_toBottomOf="@+id/riskometer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/objective"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_blue"
+                android:drawableRight="@drawable/plus"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_16"
+                android:paddingRight="@dimen/padding_16"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/investment_objective"
+                android:onClick="@{(v) -> vm.toggleObjective(v)}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/riskometer" />
+
+            <TextView
+                android:id="@+id/objective_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/margin_16"
+                android:paddingRight="@dimen/margin_16"
+                android:paddingTop="@dimen/padding_10"
+                android:paddingBottom="@dimen/padding_10"
+                android:animateLayoutChanges="true"
+                android:text="@{vm.objective}"
+                app:booleanVisibility="@{vm.showObjective}"
+                app:layout_constraintTop_toBottomOf="@+id/objective"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="lorem ipseum sn doo dbksfe hfh lsfvjhkdf hf hifdsl j kf sjdaf akfakfkskd "/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorAccentLight"
+                app:layout_constraintBottom_toBottomOf="@+id/objective_text"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <TextView
+                android:id="@+id/suitability"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/dark_blue"
+                android:drawableRight="@drawable/plus"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_16"
+                android:paddingRight="@dimen/padding_16"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/investment_objective"
+                android:onClick="@{(v) -> vm.toggleSuitability(v)}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/objective_text" />
+
+            <TextView
+                android:id="@+id/suitability_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/margin_16"
+                android:paddingRight="@dimen/margin_16"
+                android:paddingTop="@dimen/padding_10"
+                android:paddingBottom="@dimen/padding_10"
+                android:animateLayoutChanges="true"
+                android:text="@{vm.suitability}"
+                app:booleanVisibility="@{vm.showSuitability}"
+                app:layout_constraintTop_toBottomOf="@+id/suitability"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="lorem ipseum sn doo dbksfe hfh lsfvjhkdf hf hifdsl j kf sjdaf akfakfkskd "/>
+
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </layout>
