@@ -3,12 +3,13 @@ package io.github.pulakdp.mfcomparator.viewmodel;
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import io.github.pulakdp.mfcomparator.R;
+import io.github.pulakdp.mfcomparator.databinding.ActivityMfdetailBinding;
 import io.github.pulakdp.mfcomparator.model.DetailResponse;
 import io.github.pulakdp.mfcomparator.rest.PiggyApi;
 import io.github.pulakdp.mfcomparator.rest.PiggyApiClient;
@@ -49,8 +50,11 @@ public class FundDetailViewModel extends BaseObservable {
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private PiggyApi piggyApi = PiggyApiClient.getClient().create(PiggyApi.class);
 
-    public FundDetailViewModel(Context context, String key) {
+    private ActivityMfdetailBinding binding;
+
+    public FundDetailViewModel(Context context, String key, ActivityMfdetailBinding binding) {
         this.context = context;
+        this.binding = binding;
         fetchMFDetails(key);
     }
 
@@ -102,6 +106,8 @@ public class FundDetailViewModel extends BaseObservable {
     }
 
     public void toggleObjective(View view) {
+        if (TextUtils.isEmpty(objective))
+            return;
         TextView textView = (TextView) view;
         if (!showObjective) {
             showObjective = true;
@@ -113,9 +119,12 @@ public class FundDetailViewModel extends BaseObservable {
             textView.setCompoundDrawablesWithIntrinsicBounds(null, null, plus, null);
         }
         notifyChange();
+        view.post(() -> scrollTo(view));
     }
 
     public void toggleSuitability(View view) {
+        if (TextUtils.isEmpty(suitability))
+            return;
         TextView textView = (TextView) view;
         if (!showSuitability) {
             showSuitability = true;
@@ -127,6 +136,11 @@ public class FundDetailViewModel extends BaseObservable {
             textView.setCompoundDrawablesWithIntrinsicBounds(null, null, plus, null);
         }
         notifyChange();
+        view.post(() -> scrollTo(view));
+    }
+
+    private void scrollTo(View view) {
+        binding.scrollView.smoothScrollTo(0, view.getBottom());
     }
 
     private void detailFetchFailed(Throwable t) {

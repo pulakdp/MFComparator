@@ -20,7 +20,7 @@ public class MFDetailActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        viewModel = new FundDetailViewModel(this, getIntent().getStringExtra("key"));
+        viewModel = new FundDetailViewModel(this, getIntent().getStringExtra("key"), binding);
         binding.setVm(viewModel);
     }
 

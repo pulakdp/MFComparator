@@ -12,6 +12,7 @@
     </data>
 
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -31,7 +32,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-                    app:title="@{vm.title}" />
+                    app:title="@{vm.title}"
+                    app:titleTextAppearance="@style/Toolbar.TitleText" />
 
             </android.support.design.widget.AppBarLayout>
 
@@ -49,8 +51,8 @@
                 android:id="@+id/nav"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{vm.nav}"
                 android:layout_marginLeft="@dimen/margin_4"
+                android:text="@{vm.nav}"
                 android:textSize="@dimen/text_18"
                 app:layout_constraintBottom_toBottomOf="@+id/rupee"
                 app:layout_constraintStart_toEndOf="@+id/rupee"
@@ -85,12 +87,12 @@
                 android:layout_marginTop="8dp"
                 android:background="@color/dark_blue"
                 android:drawableRight="@drawable/calculator"
+                android:gravity="center_vertical"
                 android:paddingBottom="@dimen/padding_15"
                 android:paddingLeft="@dimen/padding_16"
                 android:paddingRight="@dimen/padding_16"
                 android:paddingTop="@dimen/padding_15"
                 android:text="@string/returns"
-                android:gravity="center_vertical"
                 android:textColor="@color/greyText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -444,12 +446,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8"
                 android:background="@color/dark_blue"
+                android:gravity="center_vertical"
                 android:paddingBottom="@dimen/padding_15"
                 android:paddingLeft="@dimen/padding_16"
                 android:paddingRight="@dimen/padding_16"
                 android:paddingTop="@dimen/padding_15"
                 android:text="@string/riskometer"
-                android:gravity="center_vertical"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/amc_aum" />
@@ -481,13 +483,13 @@
                 android:layout_height="wrap_content"
                 android:background="@color/dark_blue"
                 android:drawableRight="@drawable/plus"
+                android:gravity="center_vertical"
+                android:onClick="@{(v) -> vm.toggleObjective(v)}"
                 android:paddingBottom="@dimen/padding_15"
                 android:paddingLeft="@dimen/padding_16"
                 android:paddingRight="@dimen/padding_16"
                 android:paddingTop="@dimen/padding_15"
-                android:gravity="center_vertical"
                 android:text="@string/investment_objective"
-                android:onClick="@{(v) -> vm.toggleObjective(v)}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/riskometer" />
@@ -496,17 +498,17 @@
                 android:id="@+id/objective_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:paddingBottom="@dimen/padding_10"
                 android:paddingLeft="@dimen/margin_16"
                 android:paddingRight="@dimen/margin_16"
                 android:paddingTop="@dimen/padding_10"
-                android:paddingBottom="@dimen/padding_10"
-                android:animateLayoutChanges="true"
                 android:text="@{vm.objective}"
                 app:booleanVisibility="@{vm.showObjective}"
-                app:layout_constraintTop_toBottomOf="@+id/objective"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                tools:text="lorem ipseum sn doo dbksfe hfh lsfvjhkdf hf hifdsl j kf sjdaf akfakfkskd "/>
+                app:layout_constraintTop_toBottomOf="@+id/objective"
+                tools:text="lorem ipseum sn doo dbksfe hfh lsfvjhkdf hf hifdsl j kf sjdaf akfakfkskd " />
 
             <View
                 android:layout_width="match_parent"
@@ -522,13 +524,13 @@
                 android:layout_height="wrap_content"
                 android:background="@color/dark_blue"
                 android:drawableRight="@drawable/plus"
+                android:gravity="center_vertical"
+                android:onClick="@{(v) -> vm.toggleSuitability(v)}"
                 android:paddingBottom="@dimen/padding_15"
                 android:paddingLeft="@dimen/padding_16"
-                android:gravity="center_vertical"
                 android:paddingRight="@dimen/padding_16"
                 android:paddingTop="@dimen/padding_15"
                 android:text="@string/investment_objective"
-                android:onClick="@{(v) -> vm.toggleSuitability(v)}"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/objective_text" />
@@ -537,17 +539,17 @@
                 android:id="@+id/suitability_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:paddingBottom="@dimen/padding_10"
                 android:paddingLeft="@dimen/margin_16"
                 android:paddingRight="@dimen/margin_16"
                 android:paddingTop="@dimen/padding_10"
-                android:paddingBottom="@dimen/padding_10"
-                android:animateLayoutChanges="true"
                 android:text="@{vm.suitability}"
                 app:booleanVisibility="@{vm.showSuitability}"
-                app:layout_constraintTop_toBottomOf="@+id/suitability"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                tools:text="lorem ipseum sn doo dbksfe hfh lsfvjhkdf hf hifdsl j kf sjdaf akfakfkskd "/>
+                app:layout_constraintTop_toBottomOf="@+id/suitability"
+                tools:text="lorem ipseum sn doo dbksfe hfh lsfvjhkdf hf hifdsl j kf sjdaf akfakfkskd " />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

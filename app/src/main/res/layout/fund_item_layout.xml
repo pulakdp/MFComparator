@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="io.github.pulakdp.mfcomparator.viewmodel.FundItemViewModel" />
@@ -12,10 +13,10 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/padding_10"
-        android:paddingBottom="@dimen/padding_10"
+        android:background="?attr/selectableItemBackground"
         android:onClick="@{() -> vm.openDetailsActivity()}"
-        android:background="?attr/selectableItemBackground">
+        android:paddingBottom="@dimen/padding_10"
+        android:paddingTop="@dimen/padding_10">
 
         <TextView
             android:id="@+id/title"
@@ -25,6 +26,8 @@
             android:singleLine="true"
             android:text="@{vm.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+            app:layout_constraintBottom_toTopOf="@+id/desc"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintRight_toLeftOf="@id/right_icon"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,9 +43,11 @@
             android:text="@{vm.desc}"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/greyText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toRightOf="@id/guideline"
             app:layout_constraintRight_toLeftOf="@id/right_icon"
-            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
             tools:text="Equity | Min Inv. Rs 5000.0" />
 
         <ImageView
