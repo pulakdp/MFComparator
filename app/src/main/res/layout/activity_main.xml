@@ -8,13 +8,13 @@
 
         <variable
             name="act"
-            type="io.github.pulakdp.mfcomparator.MainActivity" />
+            type="io.github.pulakdp.mfcomparator.ui.MainActivity" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appBar"
@@ -43,10 +43,10 @@
         <TextView
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Search for some mutual funds to get started!"
+            android:text="@string/empty_text"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:visibility="@{act.showEmptyText ? View.VISIBLE : View.GONE}"
+            android:textSize="@dimen/text_20"
+            app:booleanVisibility="@{act.showEmptyText}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -55,7 +55,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="@{act.isLoading ? View.VISIBLE : View.GONE}"
+            app:booleanVisibility="@{act.isLoading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -65,8 +65,8 @@
             android:id="@+id/search_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="@dimen/margin_20"
+            android:layout_marginEnd="@dimen/margin_20"
             android:src="@drawable/ic_search_white_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

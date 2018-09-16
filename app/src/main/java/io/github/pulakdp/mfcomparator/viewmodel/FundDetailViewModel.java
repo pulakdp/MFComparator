@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers;
 public class FundDetailViewModel extends BaseObservable {
 
     private static final String TAG = FundDetailViewModel.class.getSimpleName();
-    public static final String rupee = "\u20B9";
+    public final String rupee = "\u20B9";
 
     private Context context;
 

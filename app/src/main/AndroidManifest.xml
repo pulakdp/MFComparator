@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MFDetailActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".ui.MFDetailActivity"
+            android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

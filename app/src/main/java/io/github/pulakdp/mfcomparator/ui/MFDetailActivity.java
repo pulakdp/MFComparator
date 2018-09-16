@@ -1,9 +1,10 @@
-package io.github.pulakdp.mfcomparator;
+package io.github.pulakdp.mfcomparator.ui;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import io.github.pulakdp.mfcomparator.R;
 import io.github.pulakdp.mfcomparator.databinding.ActivityMfdetailBinding;
 import io.github.pulakdp.mfcomparator.viewmodel.FundDetailViewModel;
 

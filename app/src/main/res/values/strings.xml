@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">MFComparator</string>
+    <string name="returns">RETURNS</string>
+    <string name="last_year">LAST YEAR</string>
+    <string name="last_3_years">LAST 3 YEARS</string>
+    <string name="last_5_years">LAST 5 YEARS</string>
+    <string name="scheme_type">SCHEME TYPE</string>
+    <string name="benchmark_type">BENCHMARK TYPE</string>
+    <string name="min_subscription">MIN SUBSCRIPTION</string>
+    <string name="exit_load">EXIT LOAD</string>
+    <string name="scheme_aum_in_crs">SCHEME AUM (in Crs)</string>
+    <string name="scheme_category">SCHEME CATEGORY</string>
+    <string name="highest_1yr_ret">HIGHEST 1Yr RET (%)</string>
+    <string name="min_addition_subscription">MIN ADDITION SUBSCRIPTION</string>
+    <string name="expenses">EXPENSES (%)</string>
+    <string name="amc_aum_in_crs">AMC AUM (in Crs)</string>
+    <string name="riskometer">RISKOMETER</string>
+    <string name="nav">(NAV)</string>
+    <string name="empty_text">Search for some mutual funds to get started!</string>
 </resources>

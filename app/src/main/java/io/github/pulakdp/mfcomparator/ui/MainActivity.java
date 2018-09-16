@@ -1,11 +1,10 @@
-package io.github.pulakdp.mfcomparator;
+package io.github.pulakdp.mfcomparator.ui;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableBoolean;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -20,9 +19,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import io.github.pulakdp.mfcomparator.R;
 import io.github.pulakdp.mfcomparator.adapter.FundsAdapter;
 import io.github.pulakdp.mfcomparator.databinding.ActivityMainBinding;
-import io.github.pulakdp.mfcomparator.model.DetailResponse;
 import io.github.pulakdp.mfcomparator.model.SearchQuery;
 import io.github.pulakdp.mfcomparator.model.SearchResponse;
 import io.github.pulakdp.mfcomparator.rest.PiggyApi;

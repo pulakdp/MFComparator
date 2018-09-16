@@ -12,8 +12,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="@dimen/padding_10"
+        android:paddingBottom="@dimen/padding_10"
         android:onClick="@{() -> vm.openDetailsActivity()}"
         android:background="?attr/selectableItemBackground">
 
@@ -34,7 +34,7 @@
             android:id="@+id/desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_8"
             android:ellipsize="end"
             android:singleLine="true"
             android:text="@{vm.desc}"
@@ -47,11 +47,11 @@
 
         <ImageView
             android:id="@+id/right_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="@dimen/icon_dimen"
+            android:layout_height="@dimen/icon_dimen"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
             android:src="@drawable/ic_chevron_right_white_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
+            app:layout_constraintGuide_begin="@dimen/margin_16" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -6,7 +6,7 @@ import android.databinding.BaseObservable;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import io.github.pulakdp.mfcomparator.MFDetailActivity;
+import io.github.pulakdp.mfcomparator.ui.MFDetailActivity;
 import io.github.pulakdp.mfcomparator.model.SearchResponse;
 
 public class FundItemViewModel extends BaseObservable {
