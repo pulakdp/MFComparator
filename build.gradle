@@ -9,6 +9,7 @@ buildscript {
         gsonVersion = '2.8.5'
         rxAndroidVersion = '2.1.0'
         rxJavaVersion = '2.2.0'
+        multiSelectVersion = '0.2'
     }
     
     repositories {

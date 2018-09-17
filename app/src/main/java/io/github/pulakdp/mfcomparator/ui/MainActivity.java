@@ -31,13 +31,14 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity
-        implements SearchView.OnQueryTextListener {
+        implements SearchView.OnQueryTextListener, FundsAdapter.TwoSelectionListener {
 
     private static final int PAGE_SIZE = 20;
 
     private int currentPage = 1;
     private String query;
 
+    private MenuItem searchItem;
     private SearchView searchView;
     private FundsAdapter adapter;
     private LinearLayoutManager layoutManager;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initRecyclerView() {
-        adapter = new FundsAdapter(this);
+        adapter = new FundsAdapter(this, this);
         layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         binding.mfList.setLayoutManager(layoutManager);
@@ -104,21 +105,33 @@ public class MainActivity extends AppCompatActivity
         fetchResults(query, ++currentPage);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
-
-        searchView = (SearchView) searchItem.getActionView();
-        binding.searchFab.setOnClickListener(v -> {
+    private View.OnClickListener fabSearchClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
             if (searchView.isIconified())
                 searchItem.expandActionView();
             else {
-                if (searchView.getQuery().equals(query))
+                if (searchView.getQuery().toString().equals(query))
                     return;
                 searchView.setQuery(searchView.getQuery(), true);
             }
-        });
+        }
+    };
+
+    private View.OnClickListener fabCompareClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            adapter.openCompareActivity(adapter.selectedKeys.get(0), adapter.selectedKeys.get(1));
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        searchItem = menu.findItem(R.id.action_search);
+
+        searchView = (SearchView) searchItem.getActionView();
+        binding.searchFab.setOnClickListener(fabSearchClickListener);
         searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem menuItem) {
@@ -205,5 +218,16 @@ public class MainActivity extends AppCompatActivity
         }
         if (searchView != null)
             searchView.clearFocus();
+    }
+
+    @Override
+    public void twoItemsSelected(boolean twoItems) {
+        if (twoItems) {
+            binding.searchFab.setImageResource(R.drawable.ic_compare_white_24dp);
+            binding.searchFab.setOnClickListener(fabCompareClickListener);
+        } else {
+            binding.searchFab.setImageResource(R.drawable.ic_search_white_24dp);
+            binding.searchFab.setOnClickListener(fabSearchClickListener);
+        }
     }
 }

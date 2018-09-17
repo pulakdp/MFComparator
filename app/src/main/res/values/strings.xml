@@ -1,21 +1,18 @@
 <resources>
     <string name="app_name">Piggy Mock</string>
-    <string name="returns">RETURNS</string>
-    <string name="last_year">LAST YEAR</string>
-    <string name="last_3_years">LAST 3 YEARS</string>
-    <string name="last_5_years">LAST 5 YEARS</string>
-    <string name="scheme_type">SCHEME TYPE</string>
-    <string name="benchmark_type">BENCHMARK TYPE</string>
-    <string name="min_subscription">MIN SUBSCRIPTION</string>
-    <string name="exit_load">EXIT LOAD</string>
-    <string name="scheme_aum_in_crs">SCHEME AUM (in Crs)</string>
-    <string name="scheme_category">SCHEME CATEGORY</string>
-    <string name="highest_1yr_ret">HIGHEST 1Yr RET (%)</string>
-    <string name="min_addition_subscription">MIN ADDITION SUBSCRIPTION</string>
-    <string name="expenses">EXPENSES (%)</string>
-    <string name="amc_aum_in_crs">AMC AUM (in Crs)</string>
-    <string name="riskometer">RISKOMETER</string>
-    <string name="nav">(NAV)</string>
-    <string name="empty_text">Search for some mutual funds to get started!</string>
-    <string name="investment_objective">INVESTMENT OBJECTIVE</string>
+    <string name="empty_text">Search for some mutual funds and compare 2 side by side!</string>
+    <string name="attributes">Attributes</string>
+    <string name="nav">NAV</string>
+    <string name="returns">Returns</string>
+    <string name="scheme_type">Scheme Type</string>
+    <string name="scheme_category">Scheme category</string>
+    <string name="benchmark_type">Benchmark Type</string>
+    <string name="highest_1yr_returns">Highest 1Yr Returns (%)</string>
+    <string name="min_subscription">Min Subscription</string>
+    <string name="min_addition_subscription">Min Addition Subscription</string>
+    <string name="exit_load">Exit Load</string>
+    <string name="expenses">Expenses (%)</string>
+    <string name="scheme_aum_in_crs">Scheme Aum (in Crs)</string>
+    <string name="amc_aum_in_crs">Amc Aum (in Crs)</string>
+    <string name="riskometer">Riskometer</string>
 </resources>

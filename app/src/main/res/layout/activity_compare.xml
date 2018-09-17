@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="io.github.pulakdp.mfcomparator.viewmodel.FundCompareViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ui.CompareActivity">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.25" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="0dp"
+                android:background="@color/colorAccentLight"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/appBar" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.625" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="0dp"
+                android:background="@color/colorAccentLight"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/appBar" />
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                    app:title="Comparison"
+                    app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+            </android.support.design.widget.AppBarLayout>
+
+            <TextView
+                android:id="@+id/attributes"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/header_height"
+                android:background="@color/dark_blue"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/attributes"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBar" />
+
+            <TextView
+                android:id="@+id/name_1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/header_height"
+                android:background="@color/dark_blue"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_16"
+                android:paddingRight="@dimen/padding_16"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@{vm.title[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/appBar"
+                tools:text="HDFC Income Fund - Direct Plan" />
+
+            <TextView
+                android:id="@+id/name_2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/header_height"
+                android:background="@color/dark_blue"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_16"
+                android:paddingRight="@dimen/padding_16"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@{vm.title[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/appBar"
+                tools:text="HDFC Dynamic PE Ratio Fund of Funds - Direct Plan" />
+
+            <TextView
+                android:id="@+id/nav_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/nav"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/attributes" />
+
+            <TextView
+                android:id="@+id/returns_attr"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/returns"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/returns_1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nav_attr" />
+
+            <TextView
+                android:id="@+id/scheme_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/scheme_type"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/returns_attr" />
+
+            <TextView
+                android:id="@+id/scheme_cat_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/scheme_category"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_attr" />
+
+            <TextView
+                android:id="@+id/benchmark_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/benchmark_type"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_cat_attr" />
+
+            <TextView
+                android:id="@+id/highest_return_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/highest_1yr_returns"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/benchmark_attr" />
+
+            <TextView
+                android:id="@+id/min_sub_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/min_subscription"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/highest_return_attr" />
+
+            <TextView
+                android:id="@+id/min_add_sub_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/min_addition_subscription"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_sub_attr" />
+
+            <TextView
+                android:id="@+id/exit_load_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/exit_load"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/min_add_sub_attr" />
+
+            <TextView
+                android:id="@+id/expenses_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/expenses"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exit_load_attr" />
+
+            <TextView
+                android:id="@+id/aum_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/scheme_aum_in_crs"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expenses_attr" />
+
+            <TextView
+                android:id="@+id/amc_aum_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/amc_aum_in_crs"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aum_attr" />
+
+            <TextView
+                android:id="@+id/riskometer_attr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_15"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_15"
+                android:text="@string/riskometer"
+                android:textColor="@color/greyText"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/amc_aum_attr" />
+
+            <TextView
+                android:id="@+id/nav_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.nav[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/nav_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/name_1"
+                tools:text="103.95\nas on 2018-09-17" />
+
+            <TextView
+                android:id="@+id/nav_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.nav[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/nav_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/name_1"
+                tools:text="103.95\nas on 2018-09-17" />
+
+            <TextView
+                android:id="@+id/returns_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_8"
+                android:text="@{vm.returns[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/returns_2"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/nav_1"
+                tools:text="LY: 14.78%\nL3Y: 14.09%\nL5Y: 15.62%" />
+
+            <TextView
+                android:id="@+id/returns_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_8"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:paddingTop="@dimen/padding_8"
+                android:text="@{vm.returns[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/nav_1"
+                tools:text="LY: 14.78%\nL3Y: 14.09%\nL5Y: 15.62%" />
+
+            <TextView
+                android:id="@+id/scheme_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.schemeType[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/scheme_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/returns_1"
+                tools:text="Open-ended" />
+
+            <TextView
+                android:id="@+id/scheme_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.schemeType[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/scheme_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/returns_1"
+                tools:text="Open-ended" />
+
+            <TextView
+                android:id="@+id/scheme_cat_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.schemeCategory[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/scheme_cat_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/scheme_cat_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.schemeCategory[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/scheme_cat_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_2"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/benchmark_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.benchmarkType[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/benchmark_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_cat_1"
+                tools:text="Nifty 50 index" />
+
+            <TextView
+                android:id="@+id/benchmark_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.benchmarkType[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/benchmark_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/scheme_cat_2"
+                tools:text="Nifty 50 index" />
+
+            <TextView
+                android:id="@+id/highest_return_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.highestReturn[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/highest_return_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/benchmark_1"
+                tools:text="53.34%\n(Sept, 13 - Sept, 14)" />
+
+            <TextView
+                android:id="@+id/highest_return_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.highestReturn[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/highest_return_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/benchmark_2"
+                tools:text="53.34%\n(Sept, 13 - Sept, 14)" />
+
+            <TextView
+                android:id="@+id/min_sub_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.minSub[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/min_sub_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/highest_return_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/min_sub_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.minSub[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/min_sub_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/highest_return_2"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/min_add_sub_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.minAddSub[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/min_add_sub_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/min_sub_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/min_add_sub_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.minAddSub[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/min_add_sub_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/min_sub_2"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/exit_load_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.exitLoad[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/exit_load_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/min_add_sub_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/exit_load_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.exitLoad[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/exit_load_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/min_add_sub_2"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/expenses_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.expenses[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/expenses_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/exit_load_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/expenses_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.expenses[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/expenses_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/exit_load_2"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/aum_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.schemeAum[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/aum_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/expenses_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/aum_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.schemeAum[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/aum_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/expenses_2"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/amc_aum_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.amcAum[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/amc_aum_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/aum_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/amc_aum_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.amcAum[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/amc_aum_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/aum_2"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/riskometer_1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.riskometer[0]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/riskometer_attr"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toBottomOf="@+id/amc_aum_1"
+                tools:text="Large Cap" />
+
+            <TextView
+                android:id="@+id/riskometer_2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_8"
+                android:paddingRight="@dimen/padding_8"
+                android:text="@{vm.riskometer[1]}"
+                android:textSize="@dimen/info_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/riskometer_attr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/amc_aum_2"
+                tools:text="Large Cap" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>

@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MFDetailActivity"
+            android:name=".ui.CompareActivity"
             android:parentActivityName=".ui.MainActivity"
             android:screenOrientation="portrait" />
     </application>
