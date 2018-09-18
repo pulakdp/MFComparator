@@ -67,7 +67,7 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.FundViewHold
                 //Launch compare activity
                 openCompareActivity(selectedKeys.get(0), selectedKeys.get(1));
 
-                multiSelector.clearSelections(); // (2)
+                multiSelector.clearSelections();
                 return true;
 
             }
@@ -79,13 +79,15 @@ public class FundsAdapter extends RecyclerView.Adapter<FundsAdapter.FundViewHold
             super.onCreateActionMode(actionMode, menu);
             ((AppCompatActivity) context).getMenuInflater().inflate(R.menu.list_context_menu, menu);
             actionMode.setTitle("Select 2 items");
+            selectedKeys.clear();
             return true;
         }
 
         @Override
         public void onDestroyActionMode(ActionMode actionMode) {
-            itemsSelected = 0;
             super.onDestroyActionMode(actionMode);
+            itemsSelected = 0;
+            twoSelectionListener.twoItemsSelected(false);
         }
     };
 

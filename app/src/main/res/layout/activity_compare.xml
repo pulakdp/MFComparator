@@ -247,7 +247,7 @@
             <TextView
                 android:id="@+id/exit_load_attr"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/header_height"
                 android:gravity="center"
                 android:paddingBottom="@dimen/padding_15"
                 android:paddingLeft="@dimen/padding_8"

@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ObservableBoolean;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity
     public ObservableBoolean showEmptyText = new ObservableBoolean(true);
     public ObservableBoolean isLoading = new ObservableBoolean(false);
     private boolean isLastPage;
+    private boolean searchFailed;
 
     private ActivityMainBinding binding;
 
@@ -84,8 +86,6 @@ public class MainActivity extends AppCompatActivity
                 binding.searchFab.hide();
             } else if (dy < 0) {
                 binding.searchFab.show();
-            } else {
-                binding.searchFab.show();
             }
             int visibleItemCount = layoutManager.getChildCount();
             int totalItemCount = layoutManager.getItemCount();
@@ -111,8 +111,6 @@ public class MainActivity extends AppCompatActivity
             if (searchView.isIconified())
                 searchItem.expandActionView();
             else {
-                if (searchView.getQuery().toString().equals(query))
-                    return;
                 searchView.setQuery(searchView.getQuery(), true);
             }
         }
@@ -176,6 +174,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void searchFailed(Throwable t) {
+        searchFailed = true;
+        adapter.clearData();
         isLoading.set(false);
         showEmptyText.set(true);
         Toast.makeText(this, "Search Failed :(\n" + t.getMessage(), Toast.LENGTH_SHORT).show();
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        if (TextUtils.isEmpty(query))
+        if (!searchFailed && query.equals(this.query))
             return false;
         currentPage = 1;
         showEmptyText.set(false);
@@ -223,11 +223,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void twoItemsSelected(boolean twoItems) {
         if (twoItems) {
-            binding.searchFab.setImageResource(R.drawable.ic_compare_white_24dp);
+            binding.searchFab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_compare_white_24dp));
             binding.searchFab.setOnClickListener(fabCompareClickListener);
+            binding.searchFab.show();
         } else {
-            binding.searchFab.setImageResource(R.drawable.ic_search_white_24dp);
+            binding.searchFab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_search_white_24dp));
             binding.searchFab.setOnClickListener(fabSearchClickListener);
+            binding.searchFab.show();
         }
     }
 }
