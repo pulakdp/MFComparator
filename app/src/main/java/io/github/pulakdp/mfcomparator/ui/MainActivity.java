@@ -225,10 +225,12 @@ public class MainActivity extends AppCompatActivity
         if (twoItems) {
             binding.searchFab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_compare_white_24dp));
             binding.searchFab.setOnClickListener(fabCompareClickListener);
+            binding.searchFab.hide();
             binding.searchFab.show();
         } else {
             binding.searchFab.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_search_white_24dp));
             binding.searchFab.setOnClickListener(fabSearchClickListener);
+            binding.searchFab.hide();
             binding.searchFab.show();
         }
     }
